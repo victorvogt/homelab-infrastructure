@@ -48,18 +48,3 @@ resource "scaleway_instance_server" "gitea_instance" {
 
   tags = ["environment:${local.environment}", "managed-by:opentofu"]
 }
-
-moved {
-  from = module.instance.scaleway_instance_ip.this
-  to   = scaleway_instance_ip.gitea_instance_ip
-}
-
-moved {
-  from = module.security_group.scaleway_instance_security_group.this
-  to   = scaleway_instance_security_group.gitea_instance_sg
-}
-
-moved {
-  from = module.instance.scaleway_instance_server.this
-  to   = scaleway_instance_server.gitea_instance
-}
