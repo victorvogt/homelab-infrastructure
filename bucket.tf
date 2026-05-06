@@ -10,7 +10,7 @@ resource "scaleway_object_bucket" "gitea_backups" {
   }
 
   versioning {
-    enabled = true
+    enabled = false
   }
 }
 
@@ -35,5 +35,9 @@ resource "scaleway_iam_api_key" "gitea_backups" {
   description        = "API key for gitea backups bucket"
   default_project_id = scaleway_account_project.gitea_project.id
 
+  expires_at = "${formatdate("YYYY", time_static.gitea_backups.rfc3339)}-12-31T23:59:59Z"
+
   depends_on = [scaleway_iam_policy.gitea_backups]
 }
+
+resource "time_static" "gitea_backups" {}

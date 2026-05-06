@@ -1,4 +1,4 @@
 resource "scaleway_account_project" "gitea_project" {
-  name        = "homelab-${local.environment}"
-  description = "Homelab ${local.environment} environment"
+  name        = "homelab"
+  description = "Home lab project for gitea and related resources"
 }
