@@ -12,6 +12,15 @@ resource "scaleway_object_bucket" "gitea_backups" {
   versioning {
     enabled = false
   }
+
+  lifecycle_rule {
+    id      = "default"
+    enabled = true
+
+    expiration {
+      days = 30
+    }
+  }
 }
 
 resource "scaleway_iam_application" "gitea_backups" {
