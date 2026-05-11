@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket                      = "vv-homelab-tfstate"
-    key                         = "homelab-infrastructure/terraform.dev.tfstate"
+    key                         = "homelab.tfstate"
     region                      = local.region
     endpoints                   = { s3 = "https://s3.fr-par.scw.cloud" }
 

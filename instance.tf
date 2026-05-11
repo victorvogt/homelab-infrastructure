@@ -1,6 +1,6 @@
 resource "scaleway_instance_security_group" "gitea_instance_sg" {
-  name                    = "${local.environment}-sg"
-  description             = "Security group for ${local.environment} environment"
+  name                    = "gitea-sg"
+  description             = "Security group for gitea instance"
   project_id              = scaleway_account_project.gitea_project.id
   inbound_default_policy  = "drop"
   outbound_default_policy = "accept"
@@ -39,12 +39,12 @@ resource "scaleway_instance_ip" "gitea_instance_ip" {
 }
 
 resource "scaleway_instance_server" "gitea_instance" {
-  name              = "${local.environment}-server"
+  name              = "gitea"
   type              = local.instance_type
   image             = local.image
   ip_id             = scaleway_instance_ip.gitea_instance_ip.id
   security_group_id = scaleway_instance_security_group.gitea_instance_sg.id
   project_id        = scaleway_account_project.gitea_project.id
 
-  tags = ["environment:${local.environment}", "managed-by:opentofu"]
+  tags = ["managed-by:opentofu"]
 }

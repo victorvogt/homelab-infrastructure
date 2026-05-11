@@ -4,7 +4,6 @@ resource "scaleway_object_bucket" "gitea_backups" {
   region     = local.region
 
   tags = {
-    environment = local.environment
     managed-by  = "opentofu"
     purpose     = "gitea-backups"
   }
@@ -29,7 +28,7 @@ resource "scaleway_iam_application" "gitea_backups" {
 }
 
 resource "scaleway_iam_policy" "gitea_backups" {
-  name           = "homelab-${local.environment}-gitea-backups-policy"
+  name           = "homelab-gitea-backups-policy"
   description    = "Grants object storage access for gitea backups"
   application_id = scaleway_iam_application.gitea_backups.id
 
