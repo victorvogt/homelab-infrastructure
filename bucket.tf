@@ -1,5 +1,5 @@
 resource "scaleway_object_bucket" "gitea_backups" {
-  name       = "homelab-${local.environment}-gitea-backups"
+  name       = "homelab-gitea-backups"
   project_id = scaleway_account_project.gitea_project.id
   region     = local.region
 
@@ -23,7 +23,7 @@ resource "scaleway_object_bucket" "gitea_backups" {
 }
 
 resource "scaleway_iam_application" "gitea_backups" {
-  name        = "homelab-${local.environment}-gitea-backups-app"
+  name        = "homelab-gitea-backups-app"
   description = "Application for gitea backups bucket access"
 }
 

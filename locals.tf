@@ -1,7 +1,6 @@
 locals {
   region        = "fr-par"
   zone          = "fr-par-1"
-  environment   = "dev"
   instance_type = "DEV1-S"
   image         = "debian_trixie"
 
