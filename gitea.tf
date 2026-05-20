@@ -46,5 +46,9 @@ resource "scaleway_instance_server" "gitea_instance" {
   security_group_id = scaleway_instance_security_group.gitea_instance_sg.id
   project_id        = scaleway_account_project.gitea_project.id
 
+  private_network {
+    pn_id = scaleway_vpc_private_network.homelab_pn.id
+  }
+
   tags = ["managed-by:opentofu"]
 }
