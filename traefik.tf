@@ -1,5 +1,5 @@
 resource "scaleway_instance_security_group" "traefik_sg" {
-  name                    = "homelab-sg"
+  name                    = "traefik-sg"
   project_id              = scaleway_account_project.gitea_project.id
   inbound_default_policy  = "drop"
   outbound_default_policy = "accept"
